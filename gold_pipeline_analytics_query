@@ -1,0 +1,25 @@
+import duckdb
+
+print("Connecting to analytics warehouse...")
+
+con = duckdb.connect()
+
+print("Top languages by stars")
+
+print(con.execute("""
+SELECT language, total_stars
+FROM 'data_lake/gold/github_language_stats.parquet'
+ORDER BY total_stars DESC
+LIMIT 10
+""").fetchdf())
+
+print("Top trending languages")
+
+print(con.execute("""
+SELECT language, trend_score
+FROM 'data_lake/gold/github_language_trends.parquet'
+ORDER BY trend_score DESC
+LIMIT 10
+""").fetchdf())
+
+print("Analytics queries complete")
