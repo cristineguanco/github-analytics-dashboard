@@ -1,58 +1,119 @@
-DevPulse Data Platform
+# DevPulse Data Platform
 
-DevPulse is a data engineering project that collects trending repository data from GitHub, processes it through a small data pipeline, and visualizes programming language popularity using an interactive Streamlit dashboard.
+![Python](https://img.shields.io/badge/Python-3.x-blue)
+![Streamlit](https://img.shields.io/badge/Streamlit-Dashboard-red)
+![DuckDB](https://img.shields.io/badge/DuckDB-Analytics-yellow)
+![License](https://img.shields.io/badge/License-MIT-green)
 
-Features
+DevPulse is a lightweight data engineering project that collects trending repository data from GitHub, processes it through a small data pipeline, and visualizes programming language trends using an interactive Streamlit dashboard.
 
-- Collects trending repository data from the GitHub API
-- Processes and transforms repository metrics
-- Stores analytics-ready data in a columnar format
-- Visualizes language popularity and technology usage trends
+The goal of this project is to demonstrate a simple modern analytics workflow using Python, a columnar data lake, and an embedded analytical database.
 
-Architecture
+---
 
-GitHub API → Data Collection → Transformation → Parquet Data Lake → DuckDB Analytics → Streamlit Dashboard
+## Project Overview
 
-Tech Stack
+The pipeline collects repository metadata from the GitHub API, transforms it into analytics-ready datasets, and stores it in a Parquet data lake.  
+DuckDB is used to run analytical queries directly on the data, and the results are visualized through a Streamlit dashboard.
 
-- Python
-- Parquet Data Lake
-- DuckDB
-- Streamlit
-- GitHub API
+This project focuses on building a simple but realistic data workflow that mirrors common patterns used in modern data platforms.
 
-Dashboard Insights
+---
 
-The dashboard provides insights such as:
+## Features
 
-- Top programming languages by total stars
-- Language popularity share
-- Technology usage distribution across repositories
+- Collects trending repository data from the GitHub API  
+- Cleans and transforms repository metrics for analysis  
+- Stores processed datasets in **Parquet format**  
+- Runs analytical queries using **DuckDB**  
+- Visualizes insights through an **interactive Streamlit dashboard**
 
-Project Structure
+---
 
-devpulse-data-platform
+## Architecture
+
+```
+GitHub API
+    ↓
+Data Collection
+    ↓
+Data Transformation
+    ↓
+Parquet Data Lake
+    ↓
+DuckDB Analytics
+    ↓
+Streamlit Dashboard
+```
+---
+
+## Tech Stack
+
+| Technology | Purpose |
+|------------|---------|
+| Python | Data pipeline and processing |
+| GitHub API | Repository data source |
+| Parquet | Columnar data storage |
+| DuckDB | Analytical query engine |
+| Streamlit | Dashboard and visualization |
+
+---
+
+## Dashboard Insights
+
+The dashboard highlights several insights from the collected repositories:
+
+- Top programming languages by total stars  
+- Programming language popularity distribution  
+- Technology usage trends across repositories  
+
+---
+
+## Project Structure
+
+```
+devpulse-data-platform/
 │
-├── dashboard.py
-├── run_pipeline.py
-├── test.py
-├── README.md
+├── dashboard.py        # Streamlit dashboard for visualizing insights
+├── run_pipeline.py     # Main script that runs the data pipeline
+├── requirements.txt    # Project dependencies
+└── README.md           # Project documentation
+```
 
-How to Run
+---
 
-Install dependencies
+## Running the Project
 
+### 1. Install Dependencies
+
+```bash
 pip install -r requirements.txt
+```
 
-Run the pipeline
+### 2. Run the Data Pipeline
 
+```bash
 python run_pipeline.py
+```
 
-Launch the dashboard
+### 3. Launch the Dashboard
 
+```bash
 streamlit run dashboard.py
+```
+---
 
-Data Source
+## Source
 
-Trending repository data collected from the GitHub API.
+Repository data is collected from GitHub API, focusing on trending repositories and their associated metadata such as stars, programming languages, and repository statistics.
 
+---
+## Future Improvements
+
+Add automated pipeline scheduling
+
+Store historical data for trend analysis
+
+Expand dashboard metrics and visualizations
+
+Integrate additional repository metadata
