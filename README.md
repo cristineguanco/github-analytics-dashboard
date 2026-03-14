@@ -74,13 +74,25 @@ The dashboard highlights several insights from the collected repositories:
 ```
 devpulse-data-platform/
 │
-├── dashboard.py        # Streamlit dashboard for visualizing insights
-├── run_pipeline.py     # Main script that runs the data pipeline
-├── requirements.txt    # Project dependencies
-└── README.md           # Project documentation
+├── data_lake/
+│   ├── bronze/
+│   │   └── github_trending_raw.parquet       # Raw data from GitHub API
+│   ├── silver/
+│   │   └── github_trending_clean.parquet     # Cleaned and standardized data
+│   └── gold/
+│       ├── github_language_stats.parquet     # Aggregated stats by language
+│       ├── github_language_trends.parquet    # Trending language metrics
+│       ├── gold_pipeline.py                  # Gold Layer processing pipeline
+│       └── gold_pipeline_analytics_query.py # Runs analytics queries on Gold datasets
+│
+├── run_pipeline.py            # Executes the full pipeline (Bronze → Silver → Gold)
+├── bronze_pipeline.py         # Collects raw GitHub data
+├── silver_pipeline.py         # Cleans and transforms Bronze data
+├── dashboard.py               # Streamlit dashboard to visualize insights
+└── README.md                  # Project documentation
 ```
 
----
+----
 
 ## Running the Project
 
